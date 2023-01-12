@@ -2,46 +2,30 @@ html,
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   background: #faf8ef;
   color: #776e65;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
 }
-
 .center {
-  align-items: center; 
-  justify-content: center; 
-  text-align: center; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 h1 {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 54px;
 }
 
-#setup {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.game-board div div {
-  width: 120px;
-  height: 104px;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  margin: 0 -15px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 32px;
-  font-weight: bold;
+.game-container {
+  position: relative;
+  margin: 2vh 0;
 }
 
 .game-board {
-  background-color: #776e65;
-  padding: 50px;
   position: relative;
+  background-color: #bbada0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,61 +37,124 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 3vh;
+  margin: 1.5vh;
 }
 
-[data-value="0"] {
-  background-color: #bbada0;
+.tile-container {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-[data-value="2"] {
+.grid-cell,
+.tile {
+  width: 120px;
+  height: 104px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.grid-cell {
+  margin: 0 -15px;
+  background-color: rgba(238, 228, 218, 0.35);
+}
+
+.tile {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 36px;
+  font-weight: bold;
+
+  transition-property: left, top;
+  transition-duration: 250ms, 250ms;
+}
+
+.spawn {
+  animation: spawn 0.5s ease;
+}
+
+.merge {
+  animation: merge 1s ease;
+}
+
+@keyframes merge {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spawn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tile-2 {
   background-color: #d6cdc4;
 }
 
-[data-value="4"] {
+.tile-4 {
   background-color: #eee1c9;
 }
 
-[data-value="8"] {
+.tile-8 {
   background-color: #f3b27a;
-  color:white;
+  color: white;
 }
 
-[data-value="16"] {
+.tile-16 {
   background-color: #f69664;
-  color:white;
+  color: white;
 }
 
-[data-value="32"] {
+.tile-32 {
   background-color: #f77c5f;
-  color:white;
+  color: white;
 }
 
-[data-value="64"] {
+.tile-64 {
   background-color: #f75f3b;
-  color:white;
+  color: white;
 }
 
-[data-value="128"] {
+.tile-128 {
   background-color: #edd073;
-  color:white;
+  color: white;
 }
 
-[data-value="256"] {
+.tile-256 {
   background-color: #edcc62;
-  color:white;
+  color: white;
 }
 
-[data-value="512"] {
+.tile-512 {
   background-color: #edc950;
-  color:white;
+  color: white;
 }
 
-[data-value="1024"] {
+.tile-1024 {
   background-color: #edc53f;
-  color:white;
+  color: white;
 }
-
-[data-value="2048"] {
+.tile-2048 {
   background-color: #edc22e;
-  color:white;
+  color: white;
 }
