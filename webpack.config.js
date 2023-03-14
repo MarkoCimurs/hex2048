@@ -1,5 +1,5 @@
-module.exports = {
-    mode: 'development',
+export default {
+    mode: 'production',
     entry: './src/index.ts',
     module: {
         rules: [
